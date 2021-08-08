@@ -12,7 +12,7 @@ Make sure you have the following software installed:
 Clone the source codes into your local system.
 
 ```
-git clone https://github.com/zeron-code/
+git clone https://github.com/zeron-code/fluxphoto.git
 ```
 
 Move to the `bin` folder of your MongoDB installation and run the following command to start it up.
