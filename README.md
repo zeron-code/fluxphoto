@@ -12,7 +12,7 @@ Make sure you have the following software installed:
 Clone the source codes into your local system.
 
 ```
-git clone https://github.com/zeron-code/
+git clone https://github.com/zeron-code/fluxphoto.git
 ```
 
 Move to the `bin` folder of your MongoDB installation and run the following command to start it up.
@@ -35,3 +35,9 @@ mvn spring-boot:run
 
 The application will launch and it can be accessed at `http://localhost:8080`
 Note that this application has no GUI and only provides a REST API.
+
+### Try out the API
+
+You can import the provided Postman collection (from the `docs` folder) and use it to test the application's API 
+
+
