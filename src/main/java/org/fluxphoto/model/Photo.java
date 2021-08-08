@@ -1,5 +1,7 @@
 package org.fluxphoto.model;
 
+import java.util.Date;
+
 import org.fluxphoto.model.provider.ProviderPhoto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,6 +19,7 @@ public class Photo {
 	private String title;
 	private String url;
 	private String thumbnailUrl;
+	private Date updateDate;
 	
 	public static Photo fromProvider(ProviderPhoto providerPhoto) {
 		Photo p = new Photo();
@@ -26,6 +29,7 @@ public class Photo {
 		p.setThumbnailUrl(providerPhoto.getThumbnailUrl());
 		p.setUrl(providerPhoto.getUrl());
 		p.setTitle(providerPhoto.getTitle());
+		p.setUpdateDate(new Date());
 		
 		return p;
 	}
@@ -84,5 +88,13 @@ public class Photo {
 	
 	public void setThumbnailUrl(String thumbnailUrl) {
 		this.thumbnailUrl = thumbnailUrl;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }

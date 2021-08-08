@@ -1,5 +1,7 @@
 package org.fluxphoto.model;
 
+import java.util.Date;
+
 import org.fluxphoto.model.provider.ProviderAlbum;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,6 +16,7 @@ public class Album {
 	private int providerId;
 	private int providerUserId;	
 	private String title;
+	private Date updateDate;
 
 	public static Album fromProvider(ProviderAlbum providerAlbum) {
 		Album a = new Album();
@@ -21,6 +24,7 @@ public class Album {
 		a.setProviderId(providerAlbum.getId());
 		a.setProviderUserId(providerAlbum.getUserId());
 		a.setTitle(providerAlbum.getTitle());
+		a.setUpdateDate(new Date());
 		return a;
 	}
 
@@ -62,5 +66,13 @@ public class Album {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }

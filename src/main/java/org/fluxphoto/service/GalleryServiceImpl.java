@@ -1,5 +1,7 @@
 package org.fluxphoto.service;
 
+import java.util.Date;
+
 import org.fluxphoto.model.Album;
 import org.fluxphoto.model.AlbumAggregate;
 import org.fluxphoto.model.Photo;
@@ -10,9 +12,11 @@ import org.fluxphoto.repository.AlbumRepository;
 import org.fluxphoto.repository.PhotoRepository;
 import org.fluxphoto.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.LookupOperation;
+import org.springframework.data.mongodb.core.aggregation.SortOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.scheduling.annotation.Async;
@@ -125,6 +129,7 @@ public class GalleryServiceImpl implements GalleryService {
 
 	@Override
 	public Mono<Photo> savePhoto(Photo photo) {
+		photo.setUpdateDate(new Date());
 		return photoRepository.save(photo);
 	}
 	
@@ -151,19 +156,25 @@ public class GalleryServiceImpl implements GalleryService {
                 .foreignField("albumId")
                 .as("photos");
 		
+		SortOperation sortAlbums = Aggregation.sort(Direction.ASC, "updateDate");
+		SortOperation sortPhotos = Aggregation.sort(Direction.ASC, "photos.updateDate");
+		
 		Aggregation aggregation = Aggregation
-				.newAggregation(Aggregation.match(Criteria.where("userId").is(userId)), lookupOp);
+				.newAggregation(Aggregation.match(Criteria.where("userId").is(userId)), 
+						lookupOp, sortAlbums, sortPhotos);
 		
         return mongoTemplate.aggregate(aggregation, "albums", AlbumAggregate.class);
 	}
 	
 	@Override
 	public Mono<Album> saveAlbum(Album album) {
+		album.setUpdateDate(new Date());
 		return albumRepository.save(album);
 	}
 
 	@Override
 	public void deleteAlbum(String id) {
 		albumRepository.deleteById(id).subscribe();
+		photoRepository.deleteByAlbum(id).subscribe();
 	}
 }
