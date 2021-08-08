@@ -36,6 +36,27 @@ mvn spring-boot:run
 The application will launch and it can be accessed at `http://localhost:8080`
 Note that this application has no GUI and only provides a REST API.
 
+### Authentication
+
+In order to access the REST API, a user must first authenticate to get an access token. To do that send a `POST` request to the below url, 
+
+```
+/authenticate
+```
+with body
+```
+{
+    "username": "admin",
+    "password": "admin"
+}
+```
+If authentication is successful, you will get back a `JWT` token in the response's `Authentication` header. Use this token to access the REST API endpoints
+by sending it with each request as a Bearer Token:
+
+```
+Authorization: Bearer <JWT_TOKEN>
+```
+
 ### Try out the API
 
 You can import the provided Postman collection (from the `docs` folder) and use it to test the application's API 
