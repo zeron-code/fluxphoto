@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "fed3aacb-4766-4d51-9644-87b44ec9bf03",
+		"name": "Photo Gallery",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Photos",
+			"item": [
+				{
+					"name": "Get Photos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/photos",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Photo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/photos/610ff92d9b6cd123989374ca",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"photos",
+								"610ff92d9b6cd123989374ca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Photo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"albumId\": \"610ff5209b6cd123989360de\",\r\n    \"title\": \"Sunset in orange\",\r\n    \"url\": \"https://via.placeholder.com/600/92c952\",\r\n    \"thumbnailUrl\": \"https://via.placeholder.com/150/92c952\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/photos",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Photo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"photoId\": \"610ff92d9b6cd123989374ca\",\r\n    \"albumId\": \"610ff5209b6cd123989360de\",\r\n    \"title\": \"Sunset in orange and blue\",\r\n    \"url\": \"https://via.placeholder.com/600/92c952\",\r\n    \"thumbnailUrl\": \"https://via.placeholder.com/150/92c952\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/photos",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Photo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/photos/610ff92d9b6cd123989374ca",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"photos",
+								"610ff92d9b6cd123989374ca"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Albums",
+			"item": [
+				{
+					"name": "Get Albums",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/albums",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Album",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/albums/610ff5e79b6cd123989374c9",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"albums",
+								"610ff5e79b6cd123989374c9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Album",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"610ff51f9b6cd123989360d3\",\r\n    \"title\": \"New-World-Album\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/albums",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Album",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"albumId\": \"610ff5e79b6cd123989374c9\",\r\n    \"userId\": \"610ff51f9b6cd123989360d3\",\r\n    \"title\": \"My new green ALBUM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/albums",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Album",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/albums/610ff5e79b6cd123989374c9",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"albums",
+								"610ff5e79b6cd123989374c9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Albums and Photos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/users/610ff51f9b6cd123989360d3/albums",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"users",
+								"610ff51f9b6cd123989360d3",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Import Gallery",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/import",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate - Demo User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"demo\",\r\n    \"password\": \"demo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/authenticate",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate - Admin User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/authenticate",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiUk9MRV9BRE1JTiIsImlhdCI6MTYyODQ0NTM4NiwiZXhwIjoxNjI4NDQ4OTg2fQ.G1WDO3UZf5C6eerhU5wDE54xh6U8vs0O90hHhIRDS9A",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
